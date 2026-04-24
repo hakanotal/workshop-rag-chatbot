@@ -2,9 +2,7 @@
 
 > A Hands-On Guide to Retrieval-Augmented Generation, Agents, and Hallucination Prevention with LLMs
 
-**NTIR Workshop** · Presenter: [Hakan Tugrul Otal](https://www.albany.edu/) — PhD Student, Department of Information Sciences & Technology, University at Albany, SUNY
-
-[**🌐 Workshop page**](https://hakanotal.github.io/workshop-rag-chatbot) · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1EbwzY2U_u_bjm_WafrVbqkct1kRzdMZP?usp=sharing)
+[**🌐 Workshop page**](https://hakanotal.github.io/workshop-rag-chatbot) - [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1MVo-hvo9jHgIz6E_adTpckZXqHU6jhR8?usp=sharing)
 
 ---
 
@@ -53,19 +51,6 @@ Optional but nice:
 
 ---
 
-## 🗂️ Repository contents
-
-```
-.
-├── index.html               # GitHub Pages landing page (workshop entry point)
-├── rag_workshop.ipynb       # Main Colab notebook — start here
-├── workshop_slides.pptx     # Workshop slides (12 slides, 15-min talk)
-├── workshop_plan_v2.md      # Presenter plan + timing + answer key
-└── README.md                # You are here
-```
-
----
-
 ## 📚 Key concepts covered
 
 - **Why LLMs hallucinate** and why RAG is one of the cheapest, strongest defenses
@@ -91,17 +76,6 @@ All open source. All free.
 
 ---
 
-## 🎓 After the workshop
-
-Things to try:
-- Swap `frankenstein.txt` for your own document (a PDF, a manual, your research)
-- Add a third agent (e.g., a Query Decomposer for multi-hop questions)
-- Swap ChromaDB for a production vector DB (Pinecone, Weaviate, pgvector)
-- Add hybrid search (BM25 + dense retrieval)
-- Add a reranker (`bge-reranker`) for higher-precision retrieval
-- Wire up LangSmith or Langfuse for production observability
-
----
 
 ## 📖 Recommended reading
 
@@ -112,24 +86,8 @@ Things to try:
 
 ---
 
-## 📬 Contact
-
-**Hakan Tugrul Otal**
-PhD Student · Dept. of Information Sciences & Technology
-University at Albany, SUNY
-
-Email: hakan.otal@cyrisk.com
-
----
-
 ## ⚖️ License
 
 Released under the MIT License — use it, remix it, teach with it, build on it.
 
 The *Frankenstein* text is in the public domain (Project Gutenberg eBook #84).
-
----
-
-## 🙏 Acknowledgments
-
-Thanks to everyone who contributed to the open-source tools we use here — Ollama, LangChain, CrewAI, ChromaDB, Gradio, and the Ragas team — and to Project Gutenberg for making classic literature freely available.

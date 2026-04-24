@@ -1,65 +1,104 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
   <defs>
-    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#D97706"/>
+    </marker>
+    <marker id="arr-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/>
     </marker>
+    <marker id="arr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16A34A"/>
+    </marker>
     <style>
-      .box { fill: #EFF4FF; stroke: #2563EB; stroke-width: 2; }
-      .box-alt { fill: #FEF3C7; stroke: #D97706; stroke-width: 2; }
-      .label { fill: #1E293B; font-size: 15px; font-weight: 600; text-anchor: middle; }
-      .label-alt { fill: #7C2D12; font-size: 15px; font-weight: 600; text-anchor: middle; }
-      .sub { fill: #64748B; font-size: 12px; text-anchor: middle; }
-      .arrow { stroke: #2563EB; stroke-width: 2.5; fill: none; }
-      .title { fill: #2563EB; font-size: 20px; font-weight: 700; text-anchor: middle; letter-spacing: 1px; }
+      .box-q    { fill: #FFFBEB; stroke: #D97706; stroke-width: 2.5; }
+      .box-vdb  { fill: #DBEAFE; stroke: #1D4ED8; stroke-width: 3; }
+      .box-llm  { fill: #FFFBEB; stroke: #D97706; stroke-width: 2.5; }
+      .box-ans  { fill: #DCFCE7; stroke: #16A34A; stroke-width: 2.5; }
+      .box-sim  { fill: #FEF3C7; stroke: #B45309; stroke-width: 3; }
+      .label    { fill: #0F172A; font-size: 22px; font-weight: 700; text-anchor: middle; }
+      .label-vdb{ fill: #1E3A8A; font-size: 22px; font-weight: 800; text-anchor: middle; }
+      .sub      { fill: #475569; font-size: 15px; text-anchor: middle; }
+      .sub-mono { fill: #334155; font-size: 14px; font-family: 'SF Mono', Menlo, Consolas, monospace; text-anchor: middle; }
+      .arrow    { stroke: #D97706; stroke-width: 3; fill: none; }
+      .arrow-b  { stroke: #2563EB; stroke-width: 3; fill: none; }
+      .arrow-g  { stroke: #16A34A; stroke-width: 3; fill: none; }
+      .title    { fill: #D97706; font-size: 26px; font-weight: 800; text-anchor: middle; letter-spacing: 3px; }
+      .subtitle { fill: #94A3B8; font-size: 16px; font-style: italic; text-anchor: middle; }
+      .edge     { fill: #475569; font-size: 15px; font-weight: 600; text-anchor: middle; }
     </style>
   </defs>
 
-  <text x="360" y="28" class="title">RETRIEVAL PHASE</text>
+  <!-- Title -->
+  <text x="600" y="38" class="title">RETRIEVAL PHASE</text>
+  <text x="600" y="62" class="subtitle">run every time someone asks a question</text>
 
-  <!-- User Query -->
-  <rect x="40" y="80" width="150" height="70" rx="12" class="box"/>
-  <text x="115" y="110" class="label">User Query</text>
-  <text x="115" y="130" class="sub">"Does the monster have a name?"</text>
+  <!-- ROW 1: Question → Embedder → Query Vector -->
+  <!-- Question -->
+  <rect x="60" y="100" width="260" height="120" rx="14" class="box-q"/>
+  <text x="190" y="150" class="label">Question</text>
+  <text x="190" y="182" class="sub">"Does the monster</text>
+  <text x="190" y="202" class="sub">have a name?"</text>
 
-  <path d="M 190 115 L 250 115" class="arrow" marker-end="url(#arr2)"/>
+  <path d="M 320 160 L 385 160" class="arrow" marker-end="url(#arr)"/>
 
-  <!-- Embedding Model -->
-  <rect x="250" y="80" width="150" height="70" rx="12" class="box"/>
-  <text x="325" y="110" class="label">Embedding Model</text>
-  <text x="325" y="130" class="sub">query → vector</text>
+  <!-- Embedder -->
+  <rect x="385" y="100" width="220" height="120" rx="14" class="box-q"/>
+  <text x="495" y="150" class="label">Embedder</text>
+  <text x="495" y="182" class="sub">query → vector</text>
+  <text x="495" y="202" class="sub" font-style="italic">same model as indexing</text>
 
-  <path d="M 400 115 L 460 115" class="arrow" marker-end="url(#arr2)"/>
+  <path d="M 605 160 L 670 160" class="arrow" marker-end="url(#arr)"/>
 
   <!-- Query Vector -->
-  <rect x="460" y="80" width="220" height="70" rx="12" class="box"/>
-  <text x="570" y="108" class="label">Query Vector</text>
-  <text x="570" y="130" fill="#334155" font-size="11" font-family="monospace" text-anchor="middle">[0.08, -0.21, 0.44, ...]</text>
+  <rect x="670" y="100" width="260" height="120" rx="14" class="box-q"/>
+  <text x="800" y="150" class="label">Query Vector</text>
+  <text x="800" y="195" class="sub-mono">[ 0.08, -0.21, 0.44, ...]</text>
 
-  <!-- Down arrow from query vector -->
-  <path d="M 570 150 L 570 190" class="arrow" marker-end="url(#arr2)"/>
+  <!-- ROW 2: Vector DB → Similarity Search (Query Vector feeds down) -->
+  <!-- Vector Database -->
+  <rect x="60" y="290" width="260" height="120" rx="14" class="box-vdb"/>
+  <text x="190" y="345" class="label-vdb">Vector Database</text>
+  <text x="190" y="378" class="sub">all indexed chunks</text>
+  <text x="190" y="398" class="sub">from Phase 1</text>
 
-  <!-- Similarity Search (with vector DB) -->
-  <rect x="360" y="190" width="300" height="80" rx="12" class="box"/>
-  <text x="510" y="220" class="label">Similarity Search</text>
-  <text x="510" y="242" class="sub">compare query vs. all chunk vectors</text>
-  <text x="510" y="258" class="sub">(cosine similarity → top-K)</text>
+  <path d="M 320 350 L 385 350" class="arrow-b" marker-end="url(#arr-b)"/>
 
-  <!-- Left: Vector DB feeding into similarity search -->
-  <rect x="40" y="200" width="280" height="60" rx="12" class="box"/>
-  <text x="180" y="226" class="label">Vector Database</text>
-  <text x="180" y="246" class="sub">indexed chunks from Frankenstein</text>
-  <path d="M 320 230 L 360 230" class="arrow" marker-end="url(#arr2)"/>
+  <!-- Similarity Search -->
+  <rect x="385" y="280" width="545" height="150" rx="14" class="box-sim"/>
+  <text x="657" y="325" class="label">Similarity Search</text>
+  <text x="657" y="358" class="sub">compare query vector against every chunk vector</text>
+  <text x="657" y="380" class="sub">rank by cosine similarity → take top-K (e.g. K=4)</text>
 
-  <!-- Down from similarity search -->
-  <path d="M 510 270 L 510 310" class="arrow" marker-end="url(#arr2)"/>
+  <!-- Query Vector feeds down into Similarity Search -->
+  <path d="M 800 220 L 800 280" class="arrow" marker-end="url(#arr)"/>
 
-  <!-- Top-K chunks + Prompt -->
-  <rect x="340" y="310" width="340" height="60" rx="12" class="box-alt"/>
-  <text x="510" y="336" class="label-alt">Top-K Chunks + Question → Prompt</text>
-  <text x="510" y="356" class="sub">stuff retrieved passages into the LLM's context</text>
+  <!-- Similarity Search feeds down-and-left to Prompt (elbow) -->
+  <path d="M 657 430 L 657 450 L 280 450 L 280 475" class="arrow" marker-end="url(#arr)"/>
+  <text x="470" y="443" class="edge" fill="#B45309">top-K chunks</text>
 
-  <!-- Down to LLM + Response -->
-  <path d="M 510 370 L 510 395" class="arrow" marker-end="url(#arr2)"/>
+  <!-- ROW 3: Augmented Prompt → LLM → Answer -->
+  <!-- Augmented Prompt -->
+  <rect x="100" y="475" width="360" height="120" rx="14" class="box-q"/>
+  <text x="280" y="520" class="label">Augmented Prompt</text>
+  <text x="280" y="550" class="sub">top-K chunks + question</text>
+  <text x="280" y="572" class="sub">+ grounding instructions</text>
 
-  <text x="510" y="415" class="label">→ LLM → Grounded Answer</text>
+  <path d="M 460 535 L 525 535" class="arrow" marker-end="url(#arr)"/>
+
+  <!-- LLM -->
+  <rect x="525" y="475" width="220" height="120" rx="14" class="box-llm"/>
+  <text x="635" y="525" class="label">LLM</text>
+  <text x="635" y="555" class="sub">generates an answer</text>
+  <text x="635" y="577" class="sub">only from context</text>
+
+  <path d="M 745 535 L 810 535" class="arrow-g" marker-end="url(#arr-g)"/>
+
+  <!-- Grounded Answer -->
+  <rect x="810" y="475" width="290" height="120" rx="14" class="box-ans"/>
+  <text x="955" y="525" class="label">Grounded Answer</text>
+  <text x="955" y="557" class="sub">supported by retrieved</text>
+  <text x="955" y="577" class="sub">passages — no fabrication</text>
+
+  <!-- Connect Similarity Search down path to Augmented Prompt -->
+  <!-- Adjust the top-K elbow: from (657, 430) down to (657, 455) then left to (280, 455) then down to (280, 475) -->
 </svg>

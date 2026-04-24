@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arr-b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/>
+    </marker>
+    <marker id="arr-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#D97706"/>
+    </marker>
+    <marker id="arr-g" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#16A34A"/>
+    </marker>
+    <marker id="arr-r" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#DC2626"/>
+    </marker>
+    <style>
+      .box-s      { fill: #EFF4FF; stroke: #2563EB; stroke-width: 2.5; }
+      .box-q      { fill: #FFFBEB; stroke: #D97706; stroke-width: 2.5; }
+      .box-agent  { fill: #FEF3C7; stroke: #B45309; stroke-width: 3; }
+      .box-ans-g  { fill: #DCFCE7; stroke: #16A34A; stroke-width: 2.5; }
+      .box-ans-b  { fill: #DBEAFE; stroke: #1D4ED8; stroke-width: 2.5; }
+      .vdb        { fill: #DBEAFE; stroke: #1D4ED8; stroke-width: 2; }
+      .label      { fill: #0F172A; font-size: 24px; font-weight: 700; text-anchor: middle; }
+      .label-sm   { fill: #0F172A; font-size: 20px; font-weight: 700; text-anchor: middle; }
+      .role       { fill: #92400E; font-size: 15px; font-style: italic; text-anchor: middle; }
+      .role-b     { fill: #1E40AF; font-size: 15px; font-style: italic; text-anchor: middle; }
+      .vdb-label  { fill: #1E3A8A; font-size: 16px; font-weight: 700; text-anchor: middle; }
+      .arrow-b    { stroke: #2563EB; stroke-width: 3.5; fill: none; }
+      .arrow-o    { stroke: #D97706; stroke-width: 3.5; fill: none; }
+      .arrow-g    { stroke: #16A34A; stroke-width: 3.5; fill: none; }
+      .arrow-r    { stroke: #DC2626; stroke-width: 3.5; fill: none; stroke-dasharray: 8 5; }
+      .lane-b     { fill: #2563EB; font-size: 24px; font-weight: 800; letter-spacing: 3px; }
+      .lane-o     { fill: #D97706; font-size: 24px; font-weight: 800; letter-spacing: 3px; }
+      .lane-sub   { fill: #94A3B8; font-size: 17px; font-style: italic; }
+      .edge-g     { fill: #16A34A; font-size: 17px; font-weight: 700; text-anchor: middle; }
+      .edge-r     { fill: #DC2626; font-size: 17px; font-weight: 700; text-anchor: middle; }
+      .divider    { stroke: #CBD5E1; stroke-width: 2; stroke-dasharray: 6 6; }
+      .loop-zone  { fill: none; stroke: #D97706; stroke-width: 2; stroke-dasharray: 4 4; opacity: 0.35; }
+    </style>
+  </defs>
+
+  <!-- ============ ROW 1: SIMPLE RAG ============ -->
+  <text x="60"  y="55" class="lane-b">SIMPLE RAG</text>
+  <text x="60"  y="85" class="lane-sub">linear · one-shot · 1 LLM call</text>
+
+  <!-- Question -->
+  <rect x="180" y="150" width="220" height="110" rx="14" class="box-s"/>
+  <text x="290" y="215" class="label">Question</text>
+
+  <path d="M 400 205 L 520 205" class="arrow-b" marker-end="url(#arr-b)"/>
+
+  <!-- Retrieve -->
+  <rect x="520" y="150" width="220" height="110" rx="14" class="box-s"/>
+  <text x="630" y="205" class="label">Retrieve</text>
+  <text x="630" y="235" class="role-b">top-K from Vector DB</text>
+
+  <path d="M 740 205 L 860 205" class="arrow-b" marker-end="url(#arr-b)"/>
+
+  <!-- Generate -->
+  <rect x="860" y="150" width="220" height="110" rx="14" class="box-s"/>
+  <text x="970" y="205" class="label">Generate</text>
+  <text x="970" y="235" class="role-b">1 LLM pass</text>
+
+  <path d="M 1080 205 L 1200 205" class="arrow-b" marker-end="url(#arr-b)"/>
+
+  <!-- Answer -->
+  <rect x="1200" y="150" width="220" height="110" rx="14" class="box-ans-b"/>
+  <text x="1310" y="215" class="label">Answer</text>
+
+  <!-- Vector DB below Retrieve -->
+  <ellipse cx="630" cy="300" rx="60" ry="12" class="vdb"/>
+  <path d="M 570 300 L 570 322 Q 570 334 630 334 Q 690 334 690 322 L 690 300" class="vdb" fill="#DBEAFE"/>
+  <ellipse cx="630" cy="300" rx="60" ry="12" class="vdb"/>
+  <text x="630" y="305" class="vdb-label">Vector DB</text>
+  <path d="M 630 288 L 630 262" class="arrow-b" marker-end="url(#arr-b)"/>
+
+  <!-- Caveat on right side -->
+  <text x="1640" y="195" fill="#64748B" font-size="16" font-weight="600">✗ no self-check</text>
+  <text x="1640" y="220" fill="#64748B" font-size="16" font-weight="600">✗ 1 bad retrieval</text>
+  <text x="1640" y="245" fill="#64748B" font-size="16" font-weight="600">    = 1 bad answer</text>
+
+  <!-- ============ DIVIDER ============ -->
+  <line x1="60" y1="390" x2="1940" y2="390" class="divider"/>
+
+  <!-- ============ ROW 2: AGENTIC RAG ============ -->
+  <text x="60"  y="440" class="lane-o">AGENTIC RAG</text>
+  <text x="60"  y="470" class="lane-sub">verification loop · 2+ LLM calls · self-correcting</text>
+
+  <!-- Loop-zone dashed box around the two agents -->
+  <rect x="490" y="510" width="610" height="180" rx="14" class="loop-zone"/>
+  <text x="795" y="705" class="lane-sub" text-anchor="middle" font-size="14">agent loop</text>
+
+  <!-- Question -->
+  <rect x="180" y="560" width="220" height="110" rx="14" class="box-q"/>
+  <text x="290" y="625" class="label">Question</text>
+
+  <path d="M 400 615 L 520 615" class="arrow-o" marker-end="url(#arr-o)"/>
+
+  <!-- Retriever Agent -->
+  <rect x="520" y="540" width="260" height="150" rx="16" class="box-agent"/>
+  <text x="650" y="595" class="label-sm">Retriever Agent</text>
+  <text x="650" y="622" class="role">searches Vector DB</text>
+  <text x="650" y="644" class="role">drafts an answer</text>
+  <text x="650" y="670" class="role">(LLM call #1)</text>
+
+  <path d="M 780 615 L 870 615" class="arrow-o" marker-end="url(#arr-o)"/>
+
+  <!-- Verifier Agent -->
+  <rect x="870" y="540" width="220" height="150" rx="16" class="box-agent"/>
+  <text x="980" y="595" class="label-sm">Verifier Agent</text>
+  <text x="980" y="622" class="role">checks each claim</text>
+  <text x="980" y="644" class="role">against context</text>
+  <text x="980" y="670" class="role">(LLM call #2)</text>
+
+  <!-- Loop back arrow (Verifier top → Retriever top) -->
+  <path d="M 980 540 C 980 470, 650 470, 650 540" class="arrow-r" marker-end="url(#arr-r)"/>
+  <text x="815" y="475" class="edge-r">✗ not grounded → refine query</text>
+
+  <!-- Vector DB below Retriever Agent -->
+  <ellipse cx="650" cy="735" rx="60" ry="12" class="vdb"/>
+  <path d="M 710 735 L 710 722 Q 710 710 650 710 Q 590 710 590 722 L 590 735" class="vdb" fill="#DBEAFE"/>
+  <ellipse cx="650" cy="710" rx="60" ry="12" class="vdb"/>
+  <text x="650" y="716" class="vdb-label">Vector DB</text>
+  <path d="M 650 698 L 650 690" class="arrow-o" marker-end="url(#arr-o)"/>
+
+  <!-- Forward path to Verified Answer -->
+  <path d="M 1090 615 L 1200 615" class="arrow-g" marker-end="url(#arr-g)"/>
+  <text x="1145" y="590" class="edge-g">✓ grounded</text>
+
+  <!-- Verified Answer -->
+  <rect x="1200" y="560" width="260" height="110" rx="14" class="box-ans-g"/>
+  <text x="1330" y="610" class="label">Verified</text>
+  <text x="1330" y="640" class="label">Answer</text>
+
+  <!-- Upside on right -->
+  <text x="1640" y="590" fill="#15803D" font-size="16" font-weight="600">✓ catches hallucinations</text>
+  <text x="1640" y="615" fill="#15803D" font-size="16" font-weight="600">✓ self-corrects on bad</text>
+  <text x="1640" y="640" fill="#15803D" font-size="16" font-weight="600">    retrieval</text>
+  <text x="1640" y="665" fill="#64748B" font-size="16" font-weight="600">✗ slower (2-3× latency)</text>
+</svg>

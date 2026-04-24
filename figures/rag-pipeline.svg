@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2000 760" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/>
+    </marker>
+    <marker id="arr-o" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#D97706"/>
+    </marker>
+    <style>
+      .box        { fill: #EFF4FF; stroke: #2563EB; stroke-width: 2.5; }
+      .box-q      { fill: #FFFBEB; stroke: #D97706; stroke-width: 2.5; }
+      .box-vdb    { fill: #DBEAFE; stroke: #1D4ED8; stroke-width: 3.5; }
+      .box-ans    { fill: #DCFCE7; stroke: #16A34A; stroke-width: 2.5; }
+      .label      { fill: #0F172A; font-size: 26px; font-weight: 700; text-anchor: middle; }
+      .label-vdb  { fill: #1E3A8A; font-size: 32px; font-weight: 800; text-anchor: middle; letter-spacing: 1px; }
+      .sub        { fill: #475569; font-size: 17px; text-anchor: middle; }
+      .sub-mono   { fill: #334155; font-size: 15px; font-family: 'SF Mono', Menlo, Consolas, monospace; text-anchor: middle; }
+      .arrow      { stroke: #2563EB; stroke-width: 3.5; fill: none; }
+      .arrow-o    { stroke: #D97706; stroke-width: 3.5; fill: none; }
+      .lane       { fill: #2563EB; font-size: 22px; font-weight: 800; letter-spacing: 3px; }
+      .lane-q     { fill: #D97706; font-size: 22px; font-weight: 800; letter-spacing: 3px; }
+      .lane-sub   { fill: #94A3B8; font-size: 16px; font-style: italic; }
+      .edge       { fill: #475569; font-size: 16px; font-weight: 600; text-anchor: middle; }
+    </style>
+  </defs>
+
+  <!-- ============ INDEXING LANE (top) ============ -->
+  <text x="60"  y="50" class="lane">PHASE 1 · INDEXING</text>
+  <text x="60"  y="75" class="lane-sub">run once, offline — build the searchable library</text>
+
+  <!-- Documents -->
+  <rect x="80"  y="110" width="220" height="130" rx="16" class="box"/>
+  <text x="190" y="165" class="label">Documents</text>
+  <text x="190" y="195" class="sub">raw text, PDFs,</text>
+  <text x="190" y="218" class="sub">any knowledge source</text>
+
+  <path d="M 300 175 L 370 175" class="arrow" marker-end="url(#arr)"/>
+
+  <!-- Text Chunker -->
+  <rect x="370" y="110" width="220" height="130" rx="16" class="box"/>
+  <text x="480" y="165" class="label">Text Chunker</text>
+  <text x="480" y="195" class="sub">split into overlapping</text>
+  <text x="480" y="218" class="sub">~800-char passages</text>
+
+  <path d="M 590 175 L 660 175" class="arrow" marker-end="url(#arr)"/>
+
+  <!-- Embedder (indexing) -->
+  <rect x="660" y="110" width="220" height="130" rx="16" class="box"/>
+  <text x="770" y="165" class="label">Embedder</text>
+  <text x="770" y="195" class="sub">text → vector</text>
+  <text x="770" y="218" class="sub-mono">(nomic-embed-text)</text>
+
+  <!-- Elbow arrow down to Vector DB -->
+  <path d="M 770 240 L 770 290 L 1000 290 L 1000 320" class="arrow" marker-end="url(#arr)"/>
+
+  <!-- ============ VECTOR DB (central pivot) ============ -->
+  <rect x="850" y="320" width="300" height="140" rx="18" class="box-vdb"/>
+  <text x="1000" y="370" class="label-vdb">VECTOR DB</text>
+  <text x="1000" y="400" class="sub">chunks + embeddings</text>
+  <text x="1000" y="424" class="sub-mono">(ChromaDB)</text>
+  <text x="1000" y="448" class="sub" font-style="italic">the shared pivot</text>
+
+  <!-- ============ QUERY-TIME LANE (bottom) ============ -->
+  <text x="60"  y="720" class="lane-q">PHASE 2 · QUERY-TIME</text>
+  <text x="60"  y="745" class="lane-sub">run every time someone asks a question</text>
+
+  <!-- Question -->
+  <rect x="80"  y="560" width="220" height="130" rx="16" class="box-q"/>
+  <text x="190" y="610" class="label">Question</text>
+  <text x="190" y="640" class="sub">"Does the monster</text>
+  <text x="190" y="663" class="sub">have a name?"</text>
+
+  <path d="M 300 625 L 370 625" class="arrow-o" marker-end="url(#arr-o)"/>
+
+  <!-- Embedder (query) -->
+  <rect x="370" y="560" width="220" height="130" rx="16" class="box-q"/>
+  <text x="480" y="615" class="label">Embedder</text>
+  <text x="480" y="645" class="sub">query → vector</text>
+  <text x="480" y="668" class="sub" font-style="italic">(same model ☝︎)</text>
+
+  <!-- Elbow arrow up from Query Embedder into Vector DB -->
+  <path d="M 590 625 L 770 625 L 770 480 L 900 480 L 900 460" class="arrow-o" marker-end="url(#arr-o)"/>
+  <text x="795" y="555" class="edge">similarity search</text>
+  <text x="795" y="575" class="edge">(top-K cosine matches)</text>
+
+  <!-- Elbow arrow from Vector DB down-right to Prompt -->
+  <path d="M 1150 400 L 1280 400 L 1280 625 L 1340 625" class="arrow" marker-end="url(#arr)"/>
+  <text x="1215" y="395" class="edge">top-K chunks</text>
+
+  <!-- Prompt (augmented) -->
+  <rect x="1340" y="560" width="260" height="130" rx="16" class="box-q"/>
+  <text x="1470" y="605" class="label">Augmented Prompt</text>
+  <text x="1470" y="635" class="sub">top-K chunks + question</text>
+  <text x="1470" y="658" class="sub">+ grounding instructions</text>
+
+  <path d="M 1600 625 L 1660 625" class="arrow-o" marker-end="url(#arr-o)"/>
+
+  <!-- LLM -->
+  <rect x="1660" y="560" width="160" height="130" rx="16" class="box-q"/>
+  <text x="1740" y="615" class="label">LLM</text>
+  <text x="1740" y="645" class="sub">generate</text>
+  <text x="1740" y="668" class="sub-mono">(llama3.2:3b)</text>
+
+  <path d="M 1820 625 L 1860 625" class="arrow-o" marker-end="url(#arr-o)"/>
+
+  <!-- Grounded Answer -->
+  <rect x="1860" y="560" width="120" height="130" rx="16" class="box-ans"/>
+  <text x="1920" y="615" class="label">Answer</text>
+  <text x="1920" y="645" class="sub">grounded</text>
+  <text x="1920" y="668" class="sub">in the text</text>
+</svg>
