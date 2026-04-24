@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2563EB"/>
+    </marker>
+    <style>
+      .box { fill: #EFF4FF; stroke: #2563EB; stroke-width: 2; }
+      .label { fill: #1E293B; font-size: 15px; font-weight: 600; text-anchor: middle; }
+      .sub { fill: #64748B; font-size: 12px; text-anchor: middle; }
+      .arrow { stroke: #2563EB; stroke-width: 2.5; fill: none; }
+      .title { fill: #2563EB; font-size: 20px; font-weight: 700; text-anchor: middle; letter-spacing: 1px; }
+    </style>
+  </defs>
+
+  <!-- Title -->
+  <text x="320" y="28" class="title">INDEXING PHASE</text>
+
+  <!-- Step 1: Documents -->
+  <rect x="40" y="80" width="140" height="70" rx="12" class="box"/>
+  <text x="110" y="115" class="label">Documents</text>
+  <text x="110" y="135" class="sub">raw text / PDFs</text>
+
+  <!-- Arrow 1 -->
+  <path d="M 180 115 L 240 115" class="arrow" marker-end="url(#arr)"/>
+
+  <!-- Step 2: Chunker -->
+  <rect x="240" y="80" width="150" height="70" rx="12" class="box"/>
+  <text x="315" y="110" class="label">Text Chunker</text>
+  <text x="315" y="130" class="sub">split into passages</text>
+
+  <!-- Arrow 2 -->
+  <path d="M 390 115 L 450 115" class="arrow" marker-end="url(#arr)"/>
+
+  <!-- Step 3: Embedding Model -->
+  <rect x="450" y="80" width="150" height="70" rx="12" class="box"/>
+  <text x="525" y="110" class="label">Embedding Model</text>
+  <text x="525" y="130" class="sub">text → vector</text>
+
+  <!-- Down arrow to vector DB -->
+  <path d="M 525 150 L 525 200 L 320 200 L 320 230" class="arrow" marker-end="url(#arr)"/>
+
+  <!-- Step 4: Vector DB -->
+  <rect x="180" y="230" width="280" height="110" rx="12" class="box"/>
+  <text x="320" y="258" class="label">Vector Database</text>
+  <line x1="200" y1="270" x2="440" y2="270" stroke="#93C5FD" stroke-width="1"/>
+  <text x="220" y="290" fill="#334155" font-size="12" font-family="monospace" text-anchor="start">chunk 1 → [0.12, 0.04, -0.34, ...]</text>
+  <text x="220" y="308" fill="#334155" font-size="12" font-family="monospace" text-anchor="start">chunk 2 → [-0.12, 0.03, 0.90, ...]</text>
+  <text x="220" y="326" fill="#334155" font-size="12" font-family="monospace" text-anchor="start">chunk 3 → [-0.02, 0.60, -0.54, ...]</text>
+</svg>

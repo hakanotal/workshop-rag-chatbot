@@ -48,7 +48,7 @@ NTIR Workshop/
 └── workshop_plan_v2.md          # This planning doc (presenter-only)
 ```
 
-The repo lives at **github.com/hakanotal/workshop-develop-rag-chatbot**, with GitHub Pages serving `index.html` from the root. Participants open the page, click **Open notebook in Colab**, and they're in.
+The repo lives at **github.com/hakanotal/workshop-rag-chatbot**, with GitHub Pages serving `index.html` from the root. Participants open the page, click **Open notebook in Colab**, and they're in.
 
 *Frankenstein* is downloaded by the notebook itself at runtime, so we don't commit it to the repo.
 
@@ -57,9 +57,9 @@ The repo lives at **github.com/hakanotal/workshop-develop-rag-chatbot**, with Gi
 ## 3. Action Items (Revised)
 
 ### This weekend (7 days out)
-- [ ] Push the repo contents to `github.com/hakanotal/workshop-develop-rag-chatbot`
+- [ ] Push the repo contents to `github.com/hakanotal/workshop-rag-chatbot`
 - [ ] Enable GitHub Pages (Settings → Pages → Deploy from main branch, root)
-- [ ] Verify the landing page renders at `hakanotal.github.io/workshop-develop-rag-chatbot`
+- [ ] Verify the landing page renders at `hakanotal.github.io/workshop-rag-chatbot`
 - [ ] Build the notebook end-to-end in Colab. Time every cell. Save outputs.
 - [ ] Test on a **fresh** Colab runtime with GPU disabled first, then enabled — both should work.
 - [ ] Verify Ollama install on Colab works reliably (sometimes flaky; have Plan B ready)
@@ -86,7 +86,7 @@ The repo lives at **github.com/hakanotal/workshop-develop-rag-chatbot**, with Gi
 *Unchanged from v1 except:*
 - **Slide 9 (Our Tools)** — drop "local laptop" framing, say "Colab + Ollama"
 - **Slide 11** — mention the final comparison demo explicitly as the payoff
-- **Slide 12** — QR code goes to the GitHub Pages landing page (`hakanotal.github.io/workshop-develop-rag-chatbot`); the page has an **Open notebook in Colab** button as the primary CTA
+- **Slide 12** — QR code goes to the GitHub Pages landing page (`hakanotal.github.io/workshop-rag-chatbot`); the page has an **Open notebook in Colab** button as the primary CTA
 
 See v1 for full slide-by-slide content. Core flow unchanged:
 1. Title | 2. About me + agenda | 3. Hallucination problem | 4. Three ways to teach an LLM | 5. RAG pipeline diagram | 6. Embeddings | 7. Chunking | 8. Agentic RAG | 9. Our stack | 10. Eval + hallucination prevention | 11. What we'll build | 12. Go

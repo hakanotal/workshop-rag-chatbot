@@ -4,13 +4,13 @@
 
 **NTIR Workshop** · Presenter: [Hakan Tugrul Otal](https://www.albany.edu/) — PhD Student, Department of Information Sciences & Technology, University at Albany, SUNY
 
-[**🌐 Workshop page**](https://hakanotal.github.io/workshop-develop-rag-chatbot) · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1EbwzY2U_u_bjm_WafrVbqkct1kRzdMZP?usp=sharing)
+[**🌐 Workshop page**](https://hakanotal.github.io/workshop-rag-chatbot) · [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1EbwzY2U_u_bjm_WafrVbqkct1kRzdMZP?usp=sharing)
 
 ---
 
 ## 🚀 Quick Start
 
-1. Open the [workshop page](https://hakanotal.github.io/workshop-develop-rag-chatbot) or click the **Open in Colab** badge above
+1. Open the [workshop page](https://hakanotal.github.io/workshop-rag-chatbot) or click the **Open in Colab** badge above
 2. In Colab, go to **Runtime → Run all**
 3. Wait ~2-3 minutes for setup
 4. Follow along with the workshop, or explore on your own
